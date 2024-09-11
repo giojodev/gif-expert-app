@@ -1,28 +1,35 @@
-import { useState } from "react"
+import { useState } from "react";
 
-export const AddCategory = () =>{
-    
-    const [inputValue, setinputValue] = useState('One Piece')
-    
-    const onInputChange = (event)=> {
-        setinputValue(event.target.value);
-    }
+export const AddCategory = ({ setCategories }) => {
+  
+  const [inputValue, setInputValue] = useState('One Piece');
+  
+  // Función para manejar el cambio de valor del input
+  const handleInputChange = (event) => {
+    setInputValue(event.target.value);
+  };
 
-    const onSubmit = (event) =>{
-        event.preventDefault();
+  // Función para manejar el envío del formulario
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const trimmedInput = inputValue.trim();
 
-        console.log(inputValue);
-    }
+    // Validar que el valor ingresado no sea demasiado corto
+    if (trimmedInput.length <= 1) return;
 
-    return (
-      <form onSubmit={(event)=>onSubmit(event)}>
-        <input
-          id="txtCategories"
-          type="text"
-          placeholder="Buscar GIF"
-          value={inputValue}
-          onChange={(event) => onInputChange(event)}
-        ></input>
-      </form>
-    );
-}
+    setCategories((categories) => [trimmedInput, ...categories]);
+    setInputValue(""); // Limpiar el input después de agregar la categoría
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <input
+        id="txtCategories"
+        type="text"
+        placeholder="Buscar GIF"
+        value={inputValue}
+        onChange={handleInputChange}
+      />
+    </form>
+  );
+};
