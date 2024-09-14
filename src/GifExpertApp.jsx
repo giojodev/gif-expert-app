@@ -5,19 +5,21 @@ const GifExpertApp = () => {
   
   const [categories, setCategories] = useState(['One Piece', 'Naruto','Bleach']);
 
-  const onAddCategorie = () =>{
-    
 
-    if(cat.value!= '' || cat.value != null )
-    {
-      setCategories([...categories,cat.value]);
-    }
-  }
+
+  const onAddCategory =(newCategory)=>{
+    // categories.push(newCategory); 
+    console.log(newCategory);
+    setCategories([...categories,newCategory]);
+ }
 
   return (
     <>
         <h1>GifExpertApp </h1>
-        <AddCategory setCategories={setCategories}/>
+        <AddCategory
+        //  setCategories={setCategories}
+          onNewCategory = {event=> onAddCategory(event) }
+         />
         
        
         <ol>
