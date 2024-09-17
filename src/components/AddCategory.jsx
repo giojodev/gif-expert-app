@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export const AddCategory = ({ setCategories }) => {
+export const AddCategory = ({onNewCategory}) => {
   
   const [inputValue, setInputValue] = useState('One Piece');
   
@@ -17,10 +17,12 @@ export const AddCategory = ({ setCategories }) => {
     // Validar que el valor ingresado no sea demasiado corto
     if (trimmedInput.length <= 1) return;
 
-    setCategories((categories) => [trimmedInput, ...categories]);
+    // setCategories((categories) => [trimmedInput, ...categories]);
+    onNewCategory(trimmedInput); 
     setInputValue(""); // Limpiar el input después de agregar la categoría
   };
 
+ 
   return (
     <form onSubmit={handleSubmit}>
       <input
