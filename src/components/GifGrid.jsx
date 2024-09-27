@@ -1,7 +1,10 @@
 // import { Grid,GridCol } from "@mantine/core"
+import {getGifs} from '..helpers/getGifs'
 
 export const GifGrid = ({category})=>{
-return (
+
+  getGifs(category);
+  return (
   <>
     {/* <Grid> */}
       {category.map((e) => (
