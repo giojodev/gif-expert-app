@@ -1,5 +1,5 @@
 // import { Grid,GridCol } from "@mantine/core"
-import {getGifs} from '..helpers/getGifs'
+import {getGifs} from '../helpers/getGifs'
 import { useEffect } from 'react';
 
 export const GifGrid = ({category})=>{
