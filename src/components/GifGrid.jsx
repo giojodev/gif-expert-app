@@ -1,18 +1,35 @@
-// import { Grid,GridCol } from "@mantine/core"
+import { useState, useEffect } from 'react';
+import {GifItem} from '../components/GifItem'
+import {getGifs} from '../helpers/getGifs'
+import { Grid } from "@mantine/core"
 
-export const GifGrid = ({category})=>{
-return (
-  <>
-    {/* <Grid> */}
-      {category.map((e) => (
-        // <GridCol span={4}>
-          <div key={e}>
-            <h3>{e}</h3>
-            <p>{e}</p>
-          </div>
-        // </GridCol>
-      ))}
-    {/* </Grid> */}
-  </>
-);
-}
+export const GifGrid = ({ category }) => {
+  const [images, setImages] = useState([]);
+
+  const getImages = async () => {
+    const newImages = await getGifs(category);
+
+    setImages(newImages);
+  };
+
+  useEffect(() => {
+    getImages();
+  }, []); // Se añade category como dependencia para que se vuelva a ejecutar si cambia
+
+  return (
+    <>
+      <h3>{category}</h3>
+      <Grid>
+        {images.map((image) => (
+          <Grid.Col span={4}>
+
+            <GifItem
+              key = {image.id} 
+              {...image}
+            />
+          </Grid.Col>
+        ))}
+      </Grid>
+    </>
+  );
+};
