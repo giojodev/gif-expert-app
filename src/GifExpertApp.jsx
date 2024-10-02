@@ -12,18 +12,23 @@ const GifExpertApp = () => {
     if(categories.includes(newCategory)) return;
     // categories.push(newCategory); 
     console.log(newCategory);
-    setCategories([...newCategory,categories]);
+    setCategories([newCategory,...categories]);
  }
 
   return (
     <>
       <h1>GifExpertApp </h1>
       <AddCategory
-        onNewCategory={(event) => onAddCategory(event)}
+        onNewCategory={onAddCategory}
       />
 
+        <ol>
+          {categories.map(category=>(
+            <GifGrid category={category} key={category}/>
 
-        <GifGrid category={categories}/>
+          ))}
+
+        </ol>
 
     </>
   );
