@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import {GifItem} from '../components/GifItem'
 import {getGifs} from '../helpers/getGifs'
-
+import { Grid } from "@mantine/core"
 
 export const GifGrid = ({ category }) => {
   const [images, setImages] = useState([]);
@@ -19,14 +19,17 @@ export const GifGrid = ({ category }) => {
   return (
     <>
       <h3>{category}</h3>
-      <div className='card-grid'>
+      <Grid>
         {images.map((image) => (
-          <GifItem
-            key = {image.id} 
-            {...image}
-          />
+          <Grid.Col span={4}>
+
+            <GifItem
+              key = {image.id} 
+              {...image}
+            />
+          </Grid.Col>
         ))}
-      </div>
+      </Grid>
     </>
   );
 };

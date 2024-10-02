@@ -14,7 +14,7 @@ export const GifItem = ({title,url,id}) =>{
             
             <h3>{title}</h3>
         </div> */}
-            <Card shadow="sm" padding="md" radius="md" withBorder >
+            <Card  padding="lg" radius="md" withBorder >
                 <Card.Section>
                     <Image 
                      src={url}
@@ -23,7 +23,7 @@ export const GifItem = ({title,url,id}) =>{
                      padding={10}
                     />
                 </Card.Section>
-                <Text size="sm" c="dark" >
+                <Text size="md" c="dark" >
                     {title}
                 </Text>
             </Card>
