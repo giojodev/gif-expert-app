@@ -2,7 +2,7 @@ import { useState } from "react";
 
 export const AddCategory = ({onNewCategory}) => {
   
-  const [inputValue, setInputValue] = useState('One Piece');
+  const [inputValue, setInputValue] = useState('');
   
   // Función para manejar el cambio de valor del input
   const handleInputChange = (event) => {

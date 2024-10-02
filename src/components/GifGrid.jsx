@@ -1,6 +1,6 @@
-// import { Grid,GridCol } from "@mantine/core"
-import {getGifs} from '../helpers/getGifs'
 import { useState, useEffect } from 'react';
+import {GifItem} from '../components/GifItem'
+import {getGifs} from '../helpers/getGifs'
 
 
 export const GifGrid = ({ category }) => {
@@ -8,23 +8,25 @@ export const GifGrid = ({ category }) => {
 
   const getImages = async () => {
     const newImages = await getGifs(category);
+
     setImages(newImages);
   };
 
   useEffect(() => {
     getImages();
-  }, [category]); // Se añade category como dependencia para que se vuelva a ejecutar si cambia
+  }, []); // Se añade category como dependencia para que se vuelva a ejecutar si cambia
 
   return (
     <>
       <h3>{category}</h3>
-      <ol>
-        {images.map(({ id, title }) => (
-          <div key={id}>
-            <h3>{title}</h3>
-          </div>
+      <div className='card-grid'>
+        {images.map((image) => (
+          <GifItem
+            key = {image.id} 
+            {...image}
+          />
         ))}
-      </ol>
+      </div>
     </>
   );
 };
