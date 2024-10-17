@@ -1,26 +1,24 @@
-import { useState, useEffect } from 'react';
+
 import {GifItem} from '../components/GifItem'
-import {getGifs} from '../helpers/getGifs'
+
 import { Grid } from "@mantine/core"
+import {useFetchGifs} from '../hooks/useFetchGifs';
+import { Loader } from '@mantine/core';
 
 export const GifGrid = ({ category }) => {
-  const [images, setImages] = useState([]);
 
-  const getImages = async () => {
-    const newImages = await getGifs(category);
+  const { images,isLoading } = useFetchGifs(category);
 
-    setImages(newImages);
-  };
-
-  useEffect(() => {
-    getImages();
-  }, []); // Se añade category como dependencia para que se vuelva a ejecutar si cambia
 
   return (
     <>
       <h3>{category}</h3>
+      {
+        isLoading && (<Loader color="rgba(78, 174, 186, 1)" type="bars" />)
+      }
       <Grid>
-        {images.map((image) => (
+        {
+        images.map((image) => (
           <Grid.Col span={4}>
 
             <GifItem
@@ -28,7 +26,8 @@ export const GifGrid = ({ category }) => {
               {...image}
             />
           </Grid.Col>
-        ))}
+        ))
+        }
       </Grid>
     </>
   );

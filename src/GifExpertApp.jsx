@@ -1,16 +1,16 @@
 import { useState } from "react"
-import {AddCategory} from './components/AddCategory'
-import {GifGrid} from './components/GifGrid'
+import {AddCategory,GifGrid} from './components'
+
 
 const GifExpertApp = () => {
   
-  const [categories, setCategories] = useState(['One Piece', 'Naruto','Bleach']);
+  const [categories, setCategories] = useState(['One Piece', 'Naruto','DBZ','TANJIRO KIMETSU']);
 
 
 
   const onAddCategory =(newCategory)=>{
     if(categories.includes(newCategory)) return;
-    // categories.push(newCategory); 
+
     console.log(newCategory);
     setCategories([newCategory,...categories]);
  }
