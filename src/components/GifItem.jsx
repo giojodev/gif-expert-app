@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { Card,Image,Text,Group, Divider } from "@mantine/core" 
 
 export const GifItem = ({title,url,id}) =>{
@@ -29,4 +30,9 @@ export const GifItem = ({title,url,id}) =>{
             </Card>
         </>
     )
+}
+
+GifItem.PropTypes ={
+    title: PropTypes.string.isRequired,
+    url: PropTypes.string.isRequired
 }
