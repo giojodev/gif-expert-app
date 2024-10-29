@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { Card,Image,Text,Group, Divider } from "@mantine/core" 
+import { Card,Image,Text } from "@mantine/core" 
 
 export const GifItem = ({title,url,id}) =>{
 
@@ -7,15 +7,15 @@ export const GifItem = ({title,url,id}) =>{
 
     return(
         <>
-        {/* <div className="card">
+        <div className="card">
             <img
                 src={url}
                 alt={title}
             />
             
             <h3>{title}</h3>
-        </div> */}
-            <Card  padding="lg" radius="md" withBorder >
+        </div>
+            {/* <Card  padding="lg" radius="md" withBorder >
                 <Card.Section>
                     <Image 
                      src={url}
@@ -27,12 +27,12 @@ export const GifItem = ({title,url,id}) =>{
                 <Text size="md" c="dark" >
                     {title}
                 </Text>
-            </Card>
+            </Card> */}
         </>
     )
 }
 
-GifItem.PropTypes ={
+GifItem.propTypes ={
     title: PropTypes.string.isRequired,
     url: PropTypes.string.isRequired
 }
