@@ -1,6 +1,6 @@
 
 import {GifItem} from '../components/GifItem'
-
+import PropTypes from 'prop-types';
 import { Grid } from "@mantine/core"
 import {useFetchGifs} from '../hooks/useFetchGifs';
 import { Loader } from '@mantine/core';
@@ -32,3 +32,7 @@ export const GifGrid = ({ category }) => {
     </>
   );
 };
+
+GifGrid.propTypes ={
+  category: PropTypes.string.isRequired
+}
